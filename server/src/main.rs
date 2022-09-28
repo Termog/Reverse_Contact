@@ -1,11 +1,11 @@
 mod db;
+use actix_session::storage::RedisSessionStore;
+use actix_session::{Session, SessionMiddleware};
 use actix_web::http::header::LOCATION;
-use actix_session::{SessionMiddleware, Session};
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use cookie::Key;
 use db::db_lib;
 use serde::Deserialize;
-use actix_session::storage::RedisSessionStore;
-use cookie::Key;
 use uuid::Uuid;
 
 //structure of data resived from the registration form
@@ -18,11 +18,13 @@ struct RegisterData {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     //Httpserver setup with all available routes
-    let redis = RedisSessionStore::new("redis://127.0.0.1:6379").await.unwrap();
+    let redis = RedisSessionStore::new("redis://127.0.0.1:6379")
+        .await
+        .unwrap();
     let key = Key::generate();
     let server = HttpServer::new(move || {
         App::new()
-            .wrap(SessionMiddleware::new(redis.clone(),key.clone()))
+            .wrap(SessionMiddleware::new(redis.clone(), key.clone()))
             .route("/", web::get().to(get_index))
             .route("/register", web::get().to(get_register))
             .route("/register", web::post().to(post_register))
@@ -73,7 +75,7 @@ async fn get_login() -> impl Responder {
             <button type="subimt">Login</button>
             </form>
         "#,
-        )
+    )
 }
 
 //function processing the login post request
@@ -82,8 +84,8 @@ async fn post_login(session: Session, form: web::Form<RegisterData>) -> HttpResp
         Ok(_) => {
             session.insert("user_id", "BRUH".to_string());
             HttpResponse::SeeOther()
-            .insert_header((LOCATION, "/"))
-            .finish()
+                .insert_header((LOCATION, "/"))
+                .finish()
         }
         Err(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
@@ -96,15 +98,13 @@ async fn post_login(session: Session, form: web::Form<RegisterData>) -> HttpResp
 //function returning the main page
 async fn get_index(session: Session) -> impl Responder {
     match session.get::<String>("user_id").unwrap() {
-        Some(_) => {
-            HttpResponse::Ok().content_type("text/html").body(
+        Some(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
             You're logged in
             "#,
-        )
-        },
+        ),
         None => HttpResponse::Ok().content_type("text/html").body(
-        r#"
+            r#"
             <button onclick="window.location='register';" value="register" />
             <button onclick="window.location='login';" value="login" />
             "#,
