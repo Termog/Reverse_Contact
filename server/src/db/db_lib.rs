@@ -19,7 +19,7 @@ pub async fn register_to_db(username: &String, password: &String) -> Result<(), 
 
     //making a connection to our database
     let pool = PgPoolOptions::new()
-        .connect("postgres://mertz@localhost/auth")
+        .connect("postgres://postgres@localhost/auth")
         .await
         .map_err(|_err| AuthError::Error)?;
 
@@ -54,7 +54,7 @@ pub async fn check_login_information(
 ) -> Result<(), AuthError> {
     //making a connection to our database
     let pool = PgPoolOptions::new()
-        .connect("postgres://mertz@localhost/auth")
+        .connect("postgres://postgres@localhost/auth")
         .await
         .map_err(|_err| AuthError::Error)?;
 

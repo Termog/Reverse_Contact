@@ -1,11 +1,12 @@
 mod db;
 use actix_web::http::header::LOCATION;
-use actix_session::SessionMiddleware;
+use actix_session::{SessionMiddleware, Session};
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 use db::db_lib;
 use serde::Deserialize;
 use actix_session::storage::RedisSessionStore;
 use cookie::Key;
+use uuid::Uuid;
 
 //structure of data resived from the registration form
 #[derive(Deserialize)]
@@ -71,16 +72,19 @@ async fn get_login() -> impl Responder {
             <input type="password" name="password"/>
             <button type="subimt">Login</button>
             </form>
-            "#,
-    )
+        "#,
+        )
 }
 
 //function processing the login post request
-async fn post_login(form: web::Form<RegisterData>) -> HttpResponse {
+async fn post_login(session: Session, form: web::Form<RegisterData>) -> HttpResponse {
     match db_lib::check_login_information(&form.username, &form.password).await {
-        Ok(_) => HttpResponse::SeeOther()
+        Ok(_) => {
+            session.insert("user_id", "BRUH".to_string());
+            HttpResponse::SeeOther()
             .insert_header((LOCATION, "/"))
-            .finish(),
+            .finish()
+        }
         Err(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
             Incorrect password
@@ -90,11 +94,20 @@ async fn post_login(form: web::Form<RegisterData>) -> HttpResponse {
 }
 
 //function returning the main page
-async fn get_index() -> impl Responder {
-    HttpResponse::Ok().content_type("text/html").body(
+async fn get_index(session: Session) -> impl Responder {
+    match session.get::<String>("user_id").unwrap() {
+        Some(_) => {
+            HttpResponse::Ok().content_type("text/html").body(
+            r#"
+            You're logged in
+            "#,
+        )
+        },
+        None => HttpResponse::Ok().content_type("text/html").body(
         r#"
             <button onclick="window.location='register';" value="register" />
             <button onclick="window.location='login';" value="login" />
             "#,
-    )
+        ),
+    }
 }
