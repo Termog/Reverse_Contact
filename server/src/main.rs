@@ -1,6 +1,8 @@
-mod db_lib;
+mod db;
+use db::{db_lib};
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 use serde::Deserialize;
+use actix_web::http::header::LOCATION;
 
 //structure of data resived from the registration form
 #[derive(Deserialize)]
@@ -68,13 +70,11 @@ async fn get_login() -> impl Responder {
 }
 
 //function processing the login post request
-async fn post_login(form: web::Form<RegisterData>) -> impl Responder {
+async fn post_login(form: web::Form<RegisterData>) -> HttpResponse{
     match db_lib::check_login_information(&form.username, &form.password).await {
-        Ok(_) => HttpResponse::Ok().content_type("text/html").body(
-            r#"
-            Login succsesfull
-            "#,
-        ),
+        Ok(_) => HttpResponse::SeeOther()
+            .insert_header((LOCATION, "/"))
+            .finish(),
         Err(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
             Incorrect password
