@@ -1,8 +1,11 @@
 mod db;
 use actix_web::http::header::LOCATION;
+use actix_session::SessionMiddleware;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 use db::db_lib;
 use serde::Deserialize;
+use actix_session::storage::RedisSessionStore;
+use cookie::Key;
 
 //structure of data resived from the registration form
 #[derive(Deserialize)]
@@ -14,8 +17,11 @@ struct RegisterData {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     //Httpserver setup with all available routes
-    let server = HttpServer::new(|| {
+    let redis = RedisSessionStore::new("redis://127.0.0.1:6379").await.unwrap();
+    let key = Key::generate();
+    let server = HttpServer::new(move || {
         App::new()
+            .wrap(SessionMiddleware::new(redis.clone(),key.clone()))
             .route("/", web::get().to(get_index))
             .route("/register", web::get().to(get_register))
             .route("/register", web::post().to(post_register))
