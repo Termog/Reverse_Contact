@@ -6,7 +6,7 @@ use sqlx::PgPool;
 
 use actix_web::web::Data;
 
-use std::sync::Mutex;
+use async_mutex::Mutex;
 
 // Add more errors
 #[derive(Debug)]
@@ -19,7 +19,7 @@ pub async fn register_to_db(
     password: &String,
     pool: Data<Mutex<PgPool>>,
 ) -> Result<(), AuthError> {
-    let pool = pool.lock().unwrap();
+    let pool = pool.lock().await;
     //generating password hash
     let salt = rand::thread_rng().gen::<[u8; 16]>();
     let config = Config::default();
@@ -66,7 +66,7 @@ pub async fn check_login_information(
     password: &String,
     pool: Data<Mutex<PgPool>>,
 ) -> Result<(), AuthError> {
-    let pool = pool.lock().unwrap();
+    let pool = pool.lock().await;
     //making a connection to our database
     /*
     let pool = PgPoolOptions::new()

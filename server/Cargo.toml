@@ -14,3 +14,4 @@ sqlx = { version = "0.6", features = ["runtime-actix-rustls", "postgres"] }
 actix-session = { version="0.7", features = ["redis-rs-session"] }
 uuid = { version = "1", features = ["v4", "serde"] }
 cookie = "0.16.1"
+async-mutex = "1.4"

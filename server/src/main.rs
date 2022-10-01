@@ -6,13 +6,13 @@ use actix_web::{
     web::{self, Data},
     App, HttpResponse, HttpServer, Responder,
 };
+use async_mutex::Mutex;
 use cookie::Key;
 use db::db_lib;
 use serde::Deserialize;
 use sqlx::postgres::PgPoolOptions;
 use sqlx::PgPool;
-use std::sync::Mutex;
-use uuid::Uuid;
+// use uuid::Uuid;
 
 //structure of data resived from the registration form
 #[derive(Deserialize)]
