@@ -1,19 +1,19 @@
 mod db;
 mod routes;
 use actix_session::storage::RedisSessionStore;
-use actix_session::{Session, SessionMiddleware};
-use actix_web::http::header::LOCATION;
+use actix_session::SessionMiddleware;
+
 use actix_web::{
     web::{self, Data},
-    App, HttpResponse, HttpServer, Responder,
+    App, HttpServer,
 };
 use async_mutex::Mutex;
 use cookie::Key;
-use db::{db_lib, errors};
+use db::errors;
 use routes::config;
 use serde::Deserialize;
 use sqlx::postgres::PgPoolOptions;
-use sqlx::PgPool;
+
 // use uuid::Uuid;
 
 //structure of data resived from the registration form

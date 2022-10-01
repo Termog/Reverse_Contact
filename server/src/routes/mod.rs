@@ -1,4 +1,4 @@
-use crate::db::{db_lib, errors};
+use crate::db::db_lib;
 use actix_session::Session;
 use actix_web::http::header::LOCATION;
 use actix_web::{
