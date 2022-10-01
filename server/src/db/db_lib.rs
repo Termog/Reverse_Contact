@@ -9,9 +9,12 @@ use actix_web::web::Data;
 use async_mutex::Mutex;
 
 // Add more errors
-#[derive(Debug)]
 pub enum AuthError {
     Error,
+    UserExists,
+    SqlxError(sqlx::Error),
+    WrongPassword,
+    UserDoesntExist,
 }
 
 pub async fn register_to_db(
@@ -56,7 +59,10 @@ pub async fn register_to_db(
         .bind(hash)
         .execute(&*pool)
         .await
-        .map_err(|_err| AuthError::Error)?;
+        .map_err(|e| match e {
+            sqlx::Error::Database(_) => AuthError::UserExists,
+            a => AuthError::SqlxError(a),
+        })?;
 
     Ok(())
 }
