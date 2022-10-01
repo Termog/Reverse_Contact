@@ -9,16 +9,20 @@ use actix_web::web::Data;
 use async_mutex::Mutex;
 
 // Add more errors
-//
-pub enum AuthErrors {
+
+pub enum AuthError {
     Error,
+    UserExists,
+    SqlxError(sqlx::Error),
+    WrongPassword,
+    UserDoesntExist,
 }
 
 pub async fn register_to_db(
     username: &String,
     password: &String,
     pool: Data<Mutex<PgPool>>,
-) -> Result<(), AuthErrors> {
+) -> Result<(), AuthError> {
     let pool = pool.lock().await;
     //generating password hash
     let salt = rand::thread_rng().gen::<[u8; 16]>();
@@ -56,7 +60,10 @@ pub async fn register_to_db(
         .bind(hash)
         .execute(&*pool)
         .await
-        .map_err(|_err| AuthErrors::Error)?;
+        .map_err(|e| match e {
+            sqlx::Error::Database(_) => AuthError::UserExists,
+            a => AuthError::SqlxError(a),
+        })?;
 
     Ok(())
 }
@@ -65,7 +72,7 @@ pub async fn check_login_information(
     username: &String,
     password: &String,
     pool: Data<Mutex<PgPool>>,
-) -> Result<(), AuthErrors> {
+) -> Result<(), AuthError> {
     let pool = pool.lock().await;
     //making a connection to our database
     /*
@@ -80,11 +87,11 @@ pub async fn check_login_information(
         .bind(username)
         .fetch_one(&*pool)
         .await
-        .map_err(|_err| AuthErrors::Error)?;
+        .map_err(|_err| AuthError::Error)?;
 
     let matches = argon2::verify_encoded(&db_hash.0, password.as_bytes()).unwrap();
     if !matches {
-        return Err(AuthErrors::Error);
+        return Err(AuthError::Error);
     }
 
     Ok(())

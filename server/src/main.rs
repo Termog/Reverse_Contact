@@ -88,11 +88,25 @@ async fn post_register(pool: Data<Mutex<PgPool>>, form: web::Form<RegisterData>)
             Registation succsesfull
             "#,
         ),
-        Err(_) => HttpResponse::Ok().content_type("text/html").body(
-            r#"
-            Username taken
+        Err(e) => match e {
+            db_lib::AuthError::UserExists => HttpResponse::Ok().content_type("text/html").body(
+                r#"
+            Username Taken
+            <form action="/register" method="post">
+            <input type="text" name="username"/>
+            <input type="password" name="password"/>
+            <button type="subimt">Register</button>
+            </form>
             "#,
-        ),
+            ),
+            _ => HttpResponse::InternalServerError()
+                .content_type("text/html")
+                .body(
+                    r#"
+            WE FUCKED UP THE DATABASE
+            "#,
+                ),
+        },
     }
 }
 
