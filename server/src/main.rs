@@ -2,10 +2,16 @@ mod db;
 use actix_session::storage::RedisSessionStore;
 use actix_session::{Session, SessionMiddleware};
 use actix_web::http::header::LOCATION;
-use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{
+    web::{self, Data},
+    App, HttpResponse, HttpServer, Responder,
+};
 use cookie::Key;
 use db::db_lib;
 use serde::Deserialize;
+use sqlx::postgres::PgPoolOptions;
+use sqlx::PgPool;
+use std::sync::Mutex;
 use uuid::Uuid;
 
 //structure of data resived from the registration form
@@ -21,10 +27,34 @@ async fn main() -> std::io::Result<()> {
     let redis = RedisSessionStore::new("redis://127.0.0.1:6379")
         .await
         .unwrap();
+
+    let pool = PgPoolOptions::new()
+        .connect("postgres://postgres@localhost/auth")
+        .await
+        .unwrap();
+    //        .map_err(|_err| AuthError::Error)?;
+
+    //creating database for usernames and passwords if it doesn't exist
+    sqlx::query(
+        r#"
+        CREATE TABLE IF NOT EXISTS shadow (
+        id bigserial,
+        name text,
+        password text,
+        UNIQUE (name)
+        );"#,
+    )
+    .execute(&pool)
+    .await
+    .unwrap();
+    //    .map_err(|_err| AuthError::Error)?;
+    let pool = Data::new(Mutex::new(pool));
+
     let key = Key::generate();
     let server = HttpServer::new(move || {
         App::new()
             .wrap(SessionMiddleware::new(redis.clone(), key.clone()))
+            .app_data(Data::clone(&pool))
             .route("/", web::get().to(get_index))
             .route("/register", web::get().to(get_register))
             .route("/register", web::post().to(post_register))
@@ -50,8 +80,8 @@ async fn get_register() -> impl Responder {
 }
 
 //function processing the registration post request
-async fn post_register(form: web::Form<RegisterData>) -> impl Responder {
-    match db_lib::register_to_db(&form.username, &form.password).await {
+async fn post_register(pool: Data<Mutex<PgPool>>, form: web::Form<RegisterData>) -> impl Responder {
+    match db_lib::register_to_db(&form.username, &form.password, pool).await {
         Ok(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
             Registation succsesfull
@@ -79,8 +109,12 @@ async fn get_login() -> impl Responder {
 }
 
 //function processing the login post request
-async fn post_login(session: Session, form: web::Form<RegisterData>) -> HttpResponse {
-    match db_lib::check_login_information(&form.username, &form.password).await {
+async fn post_login(
+    pool: Data<Mutex<PgPool>>,
+    session: Session,
+    form: web::Form<RegisterData>,
+) -> HttpResponse {
+    match db_lib::check_login_information(&form.username, &form.password, pool).await {
         Ok(_) => {
             session.insert("user_id", "BRUH".to_string());
             HttpResponse::SeeOther()
