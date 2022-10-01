@@ -9,8 +9,8 @@ use actix_web::web::Data;
 use async_mutex::Mutex;
 
 // Add more errors
-#[derive(Debug)]
-pub enum AuthError {
+//
+pub enum AuthErrors {
     Error,
 }
 
@@ -18,7 +18,7 @@ pub async fn register_to_db(
     username: &String,
     password: &String,
     pool: Data<Mutex<PgPool>>,
-) -> Result<(), AuthError> {
+) -> Result<(), AuthErrors> {
     let pool = pool.lock().await;
     //generating password hash
     let salt = rand::thread_rng().gen::<[u8; 16]>();
@@ -32,7 +32,7 @@ pub async fn register_to_db(
     let pool = PgPoolOptions::new()
         .connect("postgres://postgres@localhost/auth")
         .await
-        .map_err(|_err| AuthError::Error)?;
+        .map_err(|_err| AuthErrors::Error)?;
 
     //creating database for usernames and passwords if it doesn't exist
     sqlx::query(
@@ -46,7 +46,7 @@ pub async fn register_to_db(
     )
     .execute(&pool)
     .await
-    .map_err(|_err| AuthError::Error)?;
+    .map_err(|_err| AuthErrors::Error)?;
 
     */
 
@@ -56,7 +56,7 @@ pub async fn register_to_db(
         .bind(hash)
         .execute(&*pool)
         .await
-        .map_err(|_err| AuthError::Error)?;
+        .map_err(|_err| AuthErrors::Error)?;
 
     Ok(())
 }
@@ -65,14 +65,14 @@ pub async fn check_login_information(
     username: &String,
     password: &String,
     pool: Data<Mutex<PgPool>>,
-) -> Result<(), AuthError> {
+) -> Result<(), AuthErrors> {
     let pool = pool.lock().await;
     //making a connection to our database
     /*
     let pool = PgPoolOptions::new()
         .connect("postgres://postgres@localhost/auth")
         .await
-        .map_err(|_err| AuthError::Error)?;
+        .map_err(|_err| AuthErrors::Error)?;
         */
 
     //extracting hash from the database
@@ -80,11 +80,11 @@ pub async fn check_login_information(
         .bind(username)
         .fetch_one(&*pool)
         .await
-        .map_err(|_err| AuthError::Error)?;
+        .map_err(|_err| AuthErrors::Error)?;
 
     let matches = argon2::verify_encoded(&db_hash.0, password.as_bytes()).unwrap();
     if !matches {
-        return Err(AuthError::Error);
+        return Err(AuthErrors::Error);
     }
 
     Ok(())

@@ -8,7 +8,7 @@ use actix_web::{
 };
 use async_mutex::Mutex;
 use cookie::Key;
-use db::db_lib;
+use db::{db_lib, errors};
 use serde::Deserialize;
 use sqlx::postgres::PgPoolOptions;
 use sqlx::PgPool;
@@ -60,6 +60,7 @@ async fn main() -> std::io::Result<()> {
             .route("/register", web::post().to(post_register))
             .route("/login", web::get().to(get_login))
             .route("/login", web::post().to(post_login))
+            .default_service(web::route().to(errors::not_found))
     });
     println!("Serving on http://localhost:8080...");
     //Starting up the server
@@ -109,18 +110,23 @@ async fn get_login() -> impl Responder {
 }
 
 //function processing the login post request
+#[allow(unused_variables)]
 async fn post_login(
     pool: Data<Mutex<PgPool>>,
     session: Session,
     form: web::Form<RegisterData>,
 ) -> HttpResponse {
     match db_lib::check_login_information(&form.username, &form.password, pool).await {
-        Ok(_) => {
-            session.insert("user_id", "BRUH".to_string());
-            HttpResponse::SeeOther()
+        Ok(_) => match session.insert("user_id", "BRUH".to_string()) {
+            Ok(_) => HttpResponse::SeeOther()
                 .insert_header((LOCATION, "/"))
-                .finish()
-        }
+                .finish(),
+            Err(_) => HttpResponse::Ok().content_type("text/html").body(
+                r#"
+                Couldn't register
+                "#,
+            ),
+        },
         Err(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
             Incorrect password
@@ -134,7 +140,7 @@ async fn get_index(session: Session) -> impl Responder {
     match session.get::<String>("user_id").unwrap() {
         Some(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
-            You're logged in
+            <h1>Your're logged in.</h1>
             "#,
         ),
         None => HttpResponse::Ok().content_type("text/html").body(
