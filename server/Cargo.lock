@@ -1443,6 +1443,7 @@ dependencies = [
  "rust-argon2",
  "serde",
  "sqlx",
+ "thiserror",
  "uuid",
 ]
 
