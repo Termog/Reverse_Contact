@@ -11,17 +11,9 @@ use async_mutex::Mutex;
 use cookie::Key;
 use db::errors;
 use routes::config;
-use serde::Deserialize;
 use sqlx::postgres::PgPoolOptions;
 
 // use uuid::Uuid;
-
-//structure of data resived from the registration form
-#[derive(Deserialize)]
-struct RegisterData {
-    username: String,
-    password: String,
-}
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

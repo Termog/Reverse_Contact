@@ -29,6 +29,11 @@ pub fn config(cfg: &mut web::ServiceConfig) {
             .route(web::head().to(|| HttpResponse::MethodNotAllowed())),
     )
     .service(
+        web::resource("/logout")
+            .route(web::post().to(post_logout))
+            .route(web::get().to(get_index)),
+    )
+    .service(
         web::resource("/")
             .route(web::get().to(get_index))
             .route(web::head().to(|| HttpResponse::MethodNotAllowed())),
@@ -116,12 +121,24 @@ async fn post_login(
     }
 }
 
+//function processing the login post request
+#[allow(unused_variables)]
+async fn post_logout(session: Session) -> HttpResponse {
+    session.purge();
+    HttpResponse::SeeOther()
+        .insert_header((LOCATION, "/"))
+        .finish()
+}
+
 //function returning the main page
 async fn get_index(session: Session) -> impl Responder {
     match session.get::<String>("user_id").unwrap() {
         Some(_) => HttpResponse::Ok().content_type("text/html").body(
             r#"
             <h1>Your're logged in.</h1>
+            <form action="/logout" method="post">
+            <button type="logout">Log out</button>
+            </form>
             "#,
         ),
         None => HttpResponse::Ok().content_type("text/html").body(
