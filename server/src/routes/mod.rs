@@ -1,4 +1,5 @@
 use crate::db::db_lib;
+use actix_files::NamedFile;
 use actix_session::Session;
 use actix_web::http::header::LOCATION;
 use actix_web::{
@@ -37,7 +38,8 @@ pub fn config(cfg: &mut web::ServiceConfig) {
         web::resource("/")
             .route(web::get().to(get_index))
             .route(web::head().to(|| HttpResponse::MethodNotAllowed())),
-    );
+    )
+    .route("/default.css", web::get().to(get_default_css));
 }
 //function returning the registration page
 async fn get_register() -> impl Responder {
@@ -131,21 +133,32 @@ async fn post_logout(session: Session) -> HttpResponse {
 }
 
 //function returning the main page
-async fn get_index(session: Session) -> impl Responder {
+//async fn get_index(session: Session) -> impl Responder {
+/*
+match session.get::<String>("user_id").unwrap() {
+    Some(_) => HttpResponse::Ok().content_type("text/html").body(
+        r#"
+        <h1>Your're logged in.</h1>
+        <form action="/logout" method="post">
+        <button type="logout">Log out</button>
+        </form>
+        "#,
+    ),
+    None => HttpResponse::Ok().content_type("text/html").body(
+        r#"
+        <button onclick="window.location='register';" value="register" />
+        <button onclick="window.location='login';" value="login" />
+        "#,
+    ),
+}
+*/
+async fn get_index(session: Session) -> std::io::Result<NamedFile> {
     match session.get::<String>("user_id").unwrap() {
-        Some(_) => HttpResponse::Ok().content_type("text/html").body(
-            r#"
-            <h1>Your're logged in.</h1>
-            <form action="/logout" method="post">
-            <button type="logout">Log out</button>
-            </form>
-            "#,
-        ),
-        None => HttpResponse::Ok().content_type("text/html").body(
-            r#"
-            <button onclick="window.location='register';" value="register" />
-            <button onclick="window.location='login';" value="login" />
-            "#,
-        ),
+        Some(_) => Ok(NamedFile::open("src/routes/files/index.html")?),
+        None => Ok(NamedFile::open("src/routes/files/unaindex.html")?),
     }
+}
+
+async fn get_default_css() -> std::io::Result<NamedFile> {
+    Ok(NamedFile::open("src/routes/files/default.css")?)
 }

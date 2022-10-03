@@ -20,7 +20,7 @@ async fn main() -> std::io::Result<()> {
     //Httpserver setup with all available routes
     let redis = RedisSessionStore::new("redis://127.0.0.1:6379")
         .await
-        .unwrap();
+        .expect("Can't connect to Redis database");
 
     let pool = PgPoolOptions::new()
         .connect("postgres://postgres@localhost/auth")
