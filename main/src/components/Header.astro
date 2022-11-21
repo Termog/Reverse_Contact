@@ -1,0 +1,899 @@
+<header>
+  <nav
+    class="z-0 px-3 bg-sky-700 border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-lg"
+  >
+    <div class="container flex justify-between items-center mx-auto">
+      <!-- Logo -->
+      <div class="z-0">
+        <a href="./index.html" class="flex items-center">
+          <img
+            src="img/logo1.png"
+            class="mr-3 h-6 sm:h-10"
+            alt="Reverse-school Logo"
+          />
+          <span
+            class="self-center text-xl font-semibold whitespace-nowrap text-white"
+            >Reverse-contact</span
+          >
+        </a>
+      </div>
+
+      <div
+        id="main-nav"
+        class="hidden absolute top-14 right-0 px-5 py-10 bg-gray-700 h-screen flex flex-col md:flex md:space-y-0 md:relative md:top-0 md:right-0 md:p-0 md:flex-row md:h-full md:flex-grow md:justify md:items-center md:ml-10 md:bg-sky-700"
+      >
+        <!-- Menu Links -->
+
+        <ul
+          class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-sky-700 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        >
+          <div>
+            <button
+              id="multiLevelDropdownButton"
+              data-dropdown-toggle="dropdown001"
+              class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+              type="button"
+              >"Электронная приемная"<svg
+                class="ml-2 w-4 h-4"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <!-- Dropdown menu for Гимн родительству -->
+            <div
+              id="dropdown001"
+              class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+            >
+              <ul
+                class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="multiLevelDropdownButton"
+              >
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown002"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Обращения директора<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown002"
+                    class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Навигатор коммуникаций (к кому обратиться, как, в
+                          какой последовательности</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown003"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Юридеческая страничка<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown003"
+                    class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Ссылки на документы, регулирующие взаимодействие
+                          семьи и школы</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Горячая линия Министерства просвещения РФ для открытого
+                    диалого с учителями, родителями и всеми, кто заинтересован в
+                    улучшении качества оборазования</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Запись на личным прием</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <button
+              id="multiLevelDropdownButton"
+              data-dropdown-toggle="dropdown0"
+              class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+              type="button"
+              >Проект "Мы вместе"<svg
+                class="ml-2 w-4 h-4"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu for Гимн родительству -->
+            <div
+              id="dropdown0"
+              class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+            >
+              <ul
+                class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="multiLevelDropdownButton"
+              >
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown01"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Структура родительского соуправления<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown01"
+                    class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton0"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Положение о Родительской конференции</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Положение о родительском совете</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Положение о родительском контроле</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown02"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Направления совместной работы педагогического коллектива и
+                    родителей обучающихся<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown02"
+                    class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton0"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Общелицейские проекты по параллелям</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Профориентация, социальные практики</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Индивидуальные образовательные траектории, все, что
+                          надо о них знать, чтобы помочь своему ребенку</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Новости Совета Родителей</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Темы ближайших общешкольных родительских собрания</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Dropdown menu for Гимн родительству  -->
+          <div>
+            <button
+              id="multiLevelDropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+              type="button"
+              >Гимн родительству<svg
+                class="ml-2 w-4 h-4"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu for Гимн родительству -->
+            <div
+              id="dropdown"
+              class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+            >
+              <ul
+                class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="multiLevelDropdownButton"
+              >
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >"От родителя к родителю"<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown"
+                    class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Родители рекомендуют посетить...</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >"Азбука Санкт-Петербурга" Рассказ о
+                          достопримечательностях СПб</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Виртуальные экскурсии (семейные образовательные
+                          путешествия)</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown2"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Сообщество практиков воспитания<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown2"
+                    class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Притчи и пословицы о семье</a
+                        >
+                      </li>
+                      <li>
+                        <button
+                          id="doubleDropdownButton"
+                          data-dropdown-toggle="doubleDropdown3"
+                          data-dropdown-placement="right-start"
+                          type="button"
+                          class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Семейные традиции<svg
+                            aria-hidden="true"
+                            class="flex-shrink-0 w-4 h-4"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                        </button>
+                        <div
+                          id="doubleDropdown3"
+                          class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                        >
+                          <ul
+                            class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="doubleDropdownButton"
+                          >
+                            <li>
+                              <a
+                                href="#"
+                                class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >Архив видеороликов о семейных традициях</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Видео зал "Семья - шедевр мира..."</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Полезный контент о семейных ценностях</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- Здесь вы можете показат ьсебя  -->
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown4"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Здесь Вы можете показать себя своему ребенку
+                    <svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown4"
+                    class="hidden z-10 w-44 p-4 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >"Фото Музей Школа нашего детства"</a
+                        >
+                      </li>
+
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Готовим фестиваль "День рождения лицея"</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >"Персональная выставка", семейный теарт</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >"Научное шоу"</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- ЗПрофессия родитель  -->
+                <li>
+                  <button
+                    id="doubleDropdownButton"
+                    data-dropdown-toggle="doubleDropdown5"
+                    data-dropdown-placement="right-start"
+                    type="button"
+                    class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Профессия родитель<svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="doubleDropdown5"
+                    class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="doubleDropdownButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >"Компететнтностный профиль современного родителя"</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ul>
+
+        <div>
+          <button
+            id="multiLevelDropdownButton"
+            data-dropdown-toggle="dropdown30"
+            class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+            type="button"
+            >Проект "Мы вместе"<svg
+              class="ml-2 w-4 h-4"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <!-- Dropdown menu for Гимн родительству -->
+          <div
+            id="dropdown30"
+            class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+          >
+            <ul
+              class="py-1 text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="multiLevelDropdownButton"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Родителям будущих первоклассников</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Родительский яндекс класс</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Навигатор по внеурочной деятельности</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Золотая книга выпускников  -->
+        <div>
+          <button
+            id="multiLevelDropdownButton"
+            data-dropdown-toggle="dropdown310"
+            class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+            type="button"
+            >Золотая книга выпускников<svg
+              class="ml-2 w-4 h-4"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <!-- Dropdown menu for Гимн родительству -->
+          <div
+            id="dropdown310"
+            class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+          >
+            <ul
+              class="py-1 text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="multiLevelDropdownButton"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Золотая книга династий</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <button
+            id="multiLevelDropdownButton"
+            data-dropdown-toggle="dropdown60"
+            class="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+            type="button"
+            >"Реверс Контакт"<svg
+              class="ml-2 w-4 h-4"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown menu for Гимн родительству -->
+          <div
+            id="dropdown60"
+            class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+          >
+            <ul
+              class="py-1 text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="multiLevelDropdownButton"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Новости Лицея бегущей строкой</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Внимание: новый проект, новые возможности для лицея</a
+                >
+              </li>
+              <li>
+                <button
+                  id="doubleDropdownButton"
+                  data-dropdown-toggle="doubleDropdown61"
+                  data-dropdown-placement="right-start"
+                  type="button"
+                  class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Поздравляем победителей<svg
+                    aria-hidden="true"
+                    class="flex-shrink-0 w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </button>
+                <div
+                  id="doubleDropdown61"
+                  class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                >
+                  <ul
+                    class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="doubleDropdownButton"
+                  >
+                    <li>
+                      <a
+                        href="#"
+                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Интервью с победителями</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Фотоархив</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="flex items-center">
+          <label for="simple-search" class="sr-only">Search</label>
+          <div class="relative w-full">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="simple-search"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <span class="sr-only">Search</span>
+          </button>
+        </form>
+
+        <!-- The hamburger icon to open  -->
+        <button
+          class="inline-flex justify-center items-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-500 mobile-menu-button"
+          aria-controls="mobile-menu-2"
+          aria-expanded="false"
+          href="javascript:void(0)"
+          onclick="toggleMenu()"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Javascript code -->
+  <script>
+    var mainNav = document.getElementById("main-nav");
+    var toggleMenuIcon = document.getElementById("toggle-menu-icon");
+
+    function toggleMenu() {
+      mainNav.classList.toggle("hidden");
+
+      // change the icon when the menu is shown/closed
+      toggleMenuIcon.classList.toggle("fa-bars");
+      toggleMenuIcon.classList.toggle("fa-times");
+    }
+  </script>
+  <script>
+    function DropDown() {
+      document.querySelector("#dropdownNavbar").classList.toggle("hidden");
+      document
+        .querySelector("#dropdownNavbarLink")
+        .classList.toggle("rotate-0");
+    }
+
+    window.onclick = function (event) {
+      var dropdownNavbarLink = document.getElementById("dropdownNavbarLink");
+      var Navbar = document.getElementById("dropdownNavbar");
+      if (
+        !dropdownNavbarLink.contains(event.target) &&
+        !Navbar.classList.contains("hidden")
+      ) {
+        Navbar.classList.add("hidden");
+      }
+    };
+  </script>
+
+  <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+</header>
