@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <title>KindaCode.com</title>
+</head>
+
+<body>
+    <nav class="relative px-5 flex justify-between items-center h-14 bg-pink-600 drop-shadow-md">
+        <!-- Logo -->
+        <div>
+            <a href="#" class="text-white text-2xl font-semibold italic">
+                KINDA<span class="text-amber-500">CODE</span>
+            </a>
+        </div>
+
+        <!-- This div and its children show up when screen's width >= 769px (md breakpoint) -->
+        <div id="main-nav"
+            class="hidden absolute top-14 right-0 px-5 py-10 bg-gray-700 h-screen flex flex-col 
+            md:flex md:space-y-0 md:relative md:top-0 md:right-0 md:p-0 md:flex-row md:h-full md:flex-grow md:justify-between md:items-center md:ml-10 md:bg-inherit">
+            <!-- Menu Links -->
+            <div
+                class="order-last flex flex-col items-end text-pink-200 space-y-3  md:flex-row md:items-start md:order-first md:space-y-0 md:space-x-3">
+                <a class="text-white" href="#">Home</a>
+                <a class="hover:text-white" href="#">Frontend</a>
+                <a class="hover:text-white" href="#">Backend</a>
+            </div>
+
+            <!-- Search box -->
+            <form class="order-first mb-10 md:mb-0 md:order-last md:pr-8" action="">
+                <input class="w-72 py-1 pl-3 pr-10 rounded-full focus:outline-0" type="text" placeholder="Search.."
+                    name="search">
+                <button class="-ml-8 border-6 bg-trasparent" type="submit"><i
+                        class="fa fa-search text-gray-400"></i></button>
+            </form>
+        </div>
+
+        <!-- The hamburger icon to open/close the #main-nav when screen width < 768px (mobile devices) -->
+        <a class="md:hidden text-white text-2xl" href="javascript:void(0)" onclick="toggleMenu()"><i
+                id="toggle-menu-icon" class="fa-bars fa-solid"></i></a>
+
+    </nav>
+
+    <!-- Other content -->
+    <div class="p-10 space-y-5">
+        <h1 class="text-3xl font-light italic">Welcome to KindaCode.com</h1>
+        <h3 class="text-xl italic">Example: Responsive Navigation Menu with a Search Field Inside</h3>
+    </div>
+
+    <!-- Javascript code -->
+    <script>
+        var mainNav = document.getElementById("main-nav");
+        var toggleMenuIcon = document.getElementById("toggle-menu-icon");
+
+        function toggleMenu() {
+            mainNav.classList.toggle('hidden');
+
+            // change the icon when the menu is shown/closed
+            toggleMenuIcon.classList.toggle('fa-bars');
+            toggleMenuIcon.classList.toggle('fa-times');
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+<!-- Dropdown menu -->
+<div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+      </li>
+      <li>
+        <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dropdown<svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button>
+          <div id="doubleDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Overview</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My downloads</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Billing</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Rewards</a>
+              </li>
+            </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+      </li>
+    </ul>
+</div>
+
+
+
+<ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+    <li>
+      <a href="#"
+        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">"Фото Музей Школа нашего детства"</a>
+    </li>
+    
+    <li>
+      <a href="#"
+        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Готовим фестиваль "День рождения лицея"</a>
+    </li>
+    <li>
+      <a href="#"
+        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">"Персональная выставка", семейный теарт</a>
+    </li>
+    <li>
+      <a href="#"
+        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">"Научное шоу"</a>
+    </li>
+  </ul>
